@@ -45,7 +45,7 @@ sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               ${ENDPOINT_APPEND} $*"
               
 # Create Cloudfront Invalidation
-sh -c "aws s3 create-invalidation \
+sh -c "aws cloudfront create-invalidation \
               --profile s3-sync-action \
               --distribution-id ${AWS_DIST_ID}"
 
