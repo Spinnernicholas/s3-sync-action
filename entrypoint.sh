@@ -47,7 +47,8 @@ sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
 # Create Cloudfront Invalidation
 sh -c "aws cloudfront create-invalidation \
               --profile s3-sync-action \
-              --distribution-id ${AWS_DIST_ID}"
+              --distribution-id ${AWS_DIST_ID} \
+              --paths '/*'"
 
 # Clear out credentials after we're done.
 # We need to re-run `aws configure` with bogus input instead of
